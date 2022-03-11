@@ -10,6 +10,7 @@ import RestaurantConsumer from './src/rabbitmq/consumer-restaurant.js';
 import EmployeeConsumer from './src/rabbitmq/consumer-employee.js';
 import MenuItemConsumer from './src/rabbitmq/consumer-menuItem.js';
 
+import { WebSocket } from 'ws';
 const env = dotenv.config();
 
 const app = new express();
@@ -21,6 +22,7 @@ app.use('/api/orders', routes);
 
 const port = process.env.PORT || 3300;
 
+
 amqp.connect(process.env.AMQP_CONNECTION_URL, (connectionError, connection) => {
     if (connectionError) {
         throw connectionError;
@@ -30,6 +32,7 @@ amqp.connect(process.env.AMQP_CONNECTION_URL, (connectionError, connection) => {
             throw channelError;
         }
         
+
         console.log('Connected to RabbitMQ');
 
         const queues = [

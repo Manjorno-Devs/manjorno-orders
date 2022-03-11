@@ -5,11 +5,9 @@ import MenuItem from '../models/MenuItem.js';
 import Employees from '../models/Employees.js';
 
 import mongoose from 'mongoose';
+import {WebSocket} from 'ws';
 
 class OrdersService {
-
-    constructor(){
-    }
 
     async MakeAOrder(customerId, restaurantId, items, address, phone) {
         
@@ -33,13 +31,12 @@ class OrdersService {
         const _id = mongoose.Types.ObjectId();
         await Orders.create({_id, customerId, restaurantId, items, address, phone});
 
-        this.webScoket.send();
+        this.ws.emit('orderCreate', 'kur');
         return `Order "${_id}" created successful!`;
     }
 
     async GetOrderById(id, userCheckingId) {
         const order = await Orders.findById(id);
-        console.log(order);
         const checkUserIfEmployee = await Employees.findOne({ "userId":userCheckingId, "restaurantId": order.restaurantId })
         if (order) {
             if ((!checkUserIfEmployee) || (checkUserIfEmployee.position !== 'manager' && checkUserIfEmployee.position !== 'owner') || (order.customerId !== userCheckingId)) {
