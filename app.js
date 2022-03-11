@@ -55,7 +55,7 @@ amqp.connect(process.env.AMQP_CONNECTION_URL, (connectionError, connection) => {
         });
 
         channel.bindQueue('add-user-orders', process.env.AMQP_EXCHANGE_USERS, 'KK.EVENT.ADMIN.Manjorno.SUCCESS.USER.CREATE');
-        channel.bindQueue('add-user-orders', process.env.AMQP_EXCHANGE_USERS, 'KK.EVENT.CLIENT.Manjorno.SUCCESS.account-console.REGISTER');
+        channel.bindQueue('add-user-orders', process.env.AMQP_EXCHANGE_USERS, 'KK.EVENT.CLIENT.Manjorno.SUCCESS.client-app.REGISTER');
         channel.bindQueue('update-user-orders', process.env.AMQP_EXCHANGE_USERS, 'KK.EVENT.ADMIN.Manjorno.SUCCESS.USER.UPDATE');
         channel.bindQueue('delete-user-orders', process.env.AMQP_EXCHANGE_USERS, 'KK.EVENT.ADMIN.Manjorno.SUCCESS.USER.DELETE');
 
