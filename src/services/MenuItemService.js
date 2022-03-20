@@ -2,22 +2,25 @@ import MenuItem from '../models/MenuItem.js';
 
 class MenuItemService {
 
-    async AddItem(item){
+    async AddItem(item) {
         await MenuItem.create(item);
         return "Employee added successfully!";
     }
 
-    async SearchItem(id){
-        const search = MenuItem.findById(id);
+    async SearchItem(id) {
+        if (id) {
+            const search = MenuItem.findById(id);
+        }
+        const search = MenuItem.find();
         return search;
     }
 
     async UpdateItem(_id, name, price) {
-        await MenuItem.findByIdAndUpdate(_id, {name, price});
+        await MenuItem.findByIdAndUpdate(_id, { name, price });
         return "Employee updated successfully!"
     }
 
-    async DeleteItem(_id){
+    async DeleteItem(_id) {
         await MenuItem.findByIdAndDelete(_id);
         return "Employee deleted successfully!";
     }
