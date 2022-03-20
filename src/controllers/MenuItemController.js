@@ -7,9 +7,9 @@ class MenuItemController {
     }
 
     async FindItem(req, res) {
-        const {id} = req.query; 
+        const {id, restaurantId} = req.query; 
 
-        const search = await this.menuItemService.SearchItem(id);
+        const search = await this.menuItemService.SearchItem(id, restaurantId);
         res.status(200).json({search});
     }
 
