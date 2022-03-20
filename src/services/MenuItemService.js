@@ -13,7 +13,6 @@ class MenuItemService {
             search = MenuItem.findById(id);
         }
         if (restaurantId) {
-
             search = MenuItem.find({restaurantId});
         }
         return search;
