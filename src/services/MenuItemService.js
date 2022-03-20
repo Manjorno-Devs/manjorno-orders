@@ -7,11 +7,14 @@ class MenuItemService {
         return "Employee added successfully!";
     }
 
-    async SearchItem(id) {
+    async SearchItem(id, restaurantId) {
         if (id) {
             const search = MenuItem.findById(id);
         }
-        const search = MenuItem.find();
+        if (restaurantId) {
+
+            const search = MenuItem.find({restaurantId});
+        }
         return search;
     }
 
