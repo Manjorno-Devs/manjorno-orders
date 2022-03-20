@@ -31,19 +31,24 @@ amqp.connect(process.env.AMQP_CONNECTION_URL, (connectionError, connection) => {
         if (channelError) {
             throw channelError;
         }
-        
+
 
         console.log('Connected to RabbitMQ');
 
+        channel.assertExchange(process.env.AMQP_EXCHANGE_USERS, 'topic', {durable: false});
+        channel.assertExchange(process.env.AMQP_EXCHANGE_RESTAURANTS, 'topic', {durable: false});
+        channel.assertExchange(process.env.AMQP_EXCHANGE_EMPLOYEES, 'topic', {durable: false});
+        channel.assertExchange(process.env.AMQP_EXCHANGE_MENUITEM, 'topic', {durable: false});
+
         const queues = [
-            'add-user-orders', 
-            'update-user-orders', 
-            'delete-user-orders', 
-            'add-restaurant-orders', 
-            'update-restaurant-orders', 
-            'delete-restaurant-orders', 
-            'add-employee-orders', 
-            'update-employee-orders', 
+            'add-user-orders',
+            'update-user-orders',
+            'delete-user-orders',
+            'add-restaurant-orders',
+            'update-restaurant-orders',
+            'delete-restaurant-orders',
+            'add-employee-orders',
+            'update-employee-orders',
             'delete-employee-orders',
             'add-menuItem-orders',
             'update-menuItem-orders',
