@@ -8,12 +8,13 @@ class MenuItemService {
     }
 
     async SearchItem(id, restaurantId) {
+        let search;
         if (id) {
-            const search = MenuItem.findById(id);
+            search = MenuItem.findById(id);
         }
         if (restaurantId) {
 
-            const search = MenuItem.find({restaurantId});
+            search = MenuItem.find({restaurantId});
         }
         return search;
     }
