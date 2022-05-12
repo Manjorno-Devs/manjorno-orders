@@ -11,7 +11,7 @@ env:
   CLUSTER_NAME: Manjorno
   RESOURCE_GROUP: Manjorno
   NAMESPACE: orders-microservice
-  REPOSITORY_NAME: orders-restaurants
+  REPOSITORY_NAME: manjorno-orders
   
 
 jobs:
