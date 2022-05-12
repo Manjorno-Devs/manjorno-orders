@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: order-microservice-ingress
-  namespace: order-microservice
+  namespace: manjorno-orders
 spec:
   ingressClassName: kong
   rules:
@@ -12,6 +12,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: order-microservice
+            name: manjorno-orders
             port:
               number: 3200
