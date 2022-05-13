@@ -14,4 +14,4 @@ spec:
           service:
             name: manjorno-orders
             port:
-              number: 3200
+              number: 3300
